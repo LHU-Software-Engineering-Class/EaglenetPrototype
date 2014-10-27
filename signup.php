@@ -77,7 +77,7 @@ echo '<div id ="split1"><h3>Create your new account<br/>
 			//Email address is formed from username + @lhup.edu
 			$username = mysqli_real_escape_string($con, $_POST['user_name']);
 			$userpass = md5($_POST['user_pass']);
-			$useremail = mysqli_real_escape_string ($username. "@lhup.edu");
+			$useremail = mysqli_real_escape_string ($con,$_POST['user_name']. "@lhup.edu");
 			$uniq_code = uniqid();
 			
 			//Email with verification code sent to email generated
