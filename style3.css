@@ -1,0 +1,288 @@
+﻿/*
+//Created by: David Hall
+//Created Date: 10/11/2014
+//Last Modified: 10/24/2014
+//Version 3.0
+*/
+
+@import url("layout.css");
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	background: #930000 url('images/sitewidered.png') repeat-y center;
+	color:#333;
+}
+#container {
+	width: 950px;
+	margin: 0 auto;
+	background-color: #660000;
+}
+#masthead {
+	text-align: right;
+	color:white;
+	width: 950px;
+	overflow: auto;
+	background-color: #660000;
+}
+#sidebar {
+	float: left;
+	width: 158px;
+	background-color: #660000;
+	position: relative;
+	clear: both;
+	display: inline;
+}
+
+#menu {
+    float: right;
+    clear: both;                /* clear:both makes sure the content div doesn't float next to this one but stays under it */
+	width:762px;
+    padding: 15px;
+    background-color: #FFF;
+    text-align: left;
+}
+ 
+#menu a:hover {
+    background-color: #009FC1;
+}
+
+#userbar {
+    background-color: #FFF;
+	float: Right;
+}
+/* Menu styles */
+.item {
+    background-color: #00728B;
+    border: 1px solid #032472;
+    color: #FFF;
+    font-family: Arial;
+    padding: 3px;
+    text-decoration: none;
+}
+
+#sidebar2 {
+	float: left;
+	width: 158px;
+	height: 600px;
+	background-color: #660000;
+	position: relative;
+	clear: both;
+	display: inline;
+}
+
+#content {
+	float: left;
+	width: 762px;
+	padding: 15px;
+	overflow: auto;
+	background-color: #fff;
+	margin: 0px;
+	position: relative;
+}
+
+#content2 {
+	float: left;
+	width: 762px;
+	height: 570px;
+	padding: 15px;
+	overflow: auto;
+	background-color: #fff;
+	margin: 0px;
+	position: relative;
+}
+
+#split1{
+	float: left;
+	width: 340px;
+	padding: 15px;
+	background-color: #fff;
+	margin: 0px;
+	position: relative;
+}
+#split2{
+	float: left;
+	width: 340px;
+	padding: 15px;
+	background-color: #fff;
+	margin: 0px;
+	position: relative;
+}
+
+#content img {
+	display: block;
+}
+.topic-post {
+    height: 100px;
+    overflow: auto;
+}
+ 
+.post-content {
+    padding: 30px;
+}
+ 
+textarea {
+    width: 500px;
+    height: 200px;
+}
+#footer {
+	clear: both;
+	width: 950px;
+	background-color: #660000;
+	padding: 0;
+	overflow: auto;
+	margin-top: 0px;
+	color:white;
+}
+#masthead img {
+	float: left;
+}
+#masthead p {
+	text-align: right;
+	margin: 0;
+	margin-top: 5px;
+	margin-right: 10px;
+	padding: 0;
+}
+
+/* Styles for Navigation */
+#sidebar ul {
+	list-style-type: none;
+	width: 100%;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+#sidebar li {
+	display: block;
+	border: 1px solid #cdf;
+}
+#sidebar a {
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid #f9f9f9;
+}
+#sidebar a:hover {
+	font-weight: bold;
+	text-decoration: none;
+	color: #04b;
+	border-bottom: 1px solid #f9f9f9;
+	background-color: #f9f9f9;
+}
+
+/* Styles for Navigation */
+#sidebar2 ul {
+	list-style-type: none;
+	width: 100%;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.filler{
+	font-weight: bold;
+	text-decoration: none;
+	color: Yellow;
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid #f9f9f9;
+
+}
+
+#sidebar2 li {
+	display: block;
+	border: 1px solid #cdf;
+}
+#sidebar2 a {
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid #f9f9f9;
+}
+#sidebar2 a:hover {
+	font-weight: bold;
+	text-decoration: none;
+	color: #04b;
+	border-bottom: 1px solid #f9f9f9;
+	background-color: #f9f9f9;
+}
+
+
+/* Styles for Footer */
+#footer p {
+	font-size: 0.9em;
+	text-align: center;
+	margin: 0px;
+	padding: 2px;
+}
+#footer a {
+	color: white;
+	text-decoration: underline;
+}
+#footer a:hover {
+	color:aqua;
+	text-decoration: none;
+}
+a {
+	color: #04b;
+	text-decoration: underline;
+}
+a:hover {
+	color: aqua;
+	text-decoration: underline;
+}
+.style_bold {
+	font-weight: bold;
+}
+.style_italic {
+	font-style: italic;
+}
+
+.tborder
+{
+	background: #D1D1E1;
+	color: #000000;
+	border: 1px solid #660000;
+}
+.tcat
+{
+	background: #660000;
+	color: #FFFFFF;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #28497C;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}

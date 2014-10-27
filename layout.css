@@ -1,0 +1,39 @@
+﻿/*
+//Created by: David Hall
+//Created Date: 10/11/2014
+//Last Modified: 10/11/2014
+//Version 1.0
+*/
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#container {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#masthead {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#sidebar {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#content {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+#footer {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.float_right {
+	float:right;
+}
