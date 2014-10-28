@@ -70,7 +70,7 @@ else{
 				WHERE
 					user_name = '" . mysqli_real_escape_string($con,$_POST['user_name']) . "'
 				AND
-					user_pass = '" . md5($_POST['user_pass']) . "'";
+					user_pass = '" . hash('sha256',($_POST['user_pass'])) . "'";
 		$result = mysqli_query($con,$sql);
 		if(!$result){
 			//something went wrong, display the error

@@ -24,6 +24,6 @@ echo'<!-- Begin Content -->
 <div id="content2">';
 echo '<h2>Sign out</h2>';
 echo 'Succesfully signed out, thank you for visiting.<br /><br />';
-echo 'You are not signed in. Would you <a href="index.php">like to</a>?';
+echo 'You are not signed in. Would you <a href="home.php">like to</a>?';
 
 include 'footer2.php';

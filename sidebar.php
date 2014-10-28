@@ -20,7 +20,7 @@
 				}
 				else
 				{
-					echo '<li><a href="index.php">Sign in</a></li> 
+					echo '<li><a href="home.php">Sign in</a></li> 
 					<li><a href="signup.php">Create an account</a></li>
 					<li class="filler">&nbsp;----------------------------</li>';
 				}

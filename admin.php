@@ -48,6 +48,5 @@ echo'<a href="forum_create.php">Create a new forum</a> ';
 //edit post by anyone
 //edit thread by anyone
 //edit Forum by anyone
-echo '</div>';
 include 'footer.php';
 }
