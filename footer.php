@@ -11,7 +11,7 @@
 </div><!-- End Page content -->
 	<div id="footer">
 	<p>
-			<a href="home.php">Home</a>|
+			<a href="index.php">Home</a>|
 			<a href="forumview.php">All Students</a>|
 			<a href="forumview.php">Majors</a>|
 			<a href="forumview.php">Clubs</a>|
