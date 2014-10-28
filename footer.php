@@ -21,7 +21,8 @@
 			<a href="forumview.php">Campus Housing</a>|
 			<a href="forumview.php">Local Attractions</a>|
 			<a href="forumview.php">Campus Maps</a>|
-			<a href="forumview.php">Book Finder</a>
+			<a href="forumview.php">Book Finder</a>|
+			<a href="admin.php">Admin</a>
 			<br />Designed By Lock Haven University Students COMP405 2014</p>
 	</div><!--End Footer-->
 </div><!--End Content-->

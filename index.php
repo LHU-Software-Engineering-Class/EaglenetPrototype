@@ -19,9 +19,9 @@ echo '<div id ="split2"><h3>Sign in<br/>
 ***********************************************************</h3>';
 //first, check if the user is already signed in. If that is the case, there is no need to display this page
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true){
-    echo 'You are already signed in. <br/>
+    echo '<h3>You are already signed in. <br/><br/>
 	<a href="start.php">CLICK HERE</a> to go back the start page.<br/><br/>
-	Or you can <a href="signout.php">SIGN OUT</a> if you want.';
+	Or you can <a href="signout.php">SIGN OUT</a> if you want.</h3>';
 }
 else{
 if($_SERVER['REQUEST_METHOD'] != 'POST'){

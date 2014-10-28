@@ -27,4 +27,3 @@ echo 'Succesfully signed out, thank you for visiting.<br /><br />';
 echo 'You are not signed in. Would you <a href="home.php">like to</a>?';
 
 include 'footer2.php';
-?>

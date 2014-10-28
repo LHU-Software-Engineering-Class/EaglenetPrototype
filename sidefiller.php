@@ -11,6 +11,7 @@
 	<div id="sidebar2">
 			<li><a href="home.php">Sign in</a></li> 
 			<li><a href="signup.php">Create an account</a></li>
+			<li><a href="verification.php">Verify your account</a></li>
 			<li class="filler">&nbsp;----------------------------</li>
 		<li><a href="http://www.lhup.edu">Lock Haven University</a></li>
 		<li><a href="https://myhaven.lhup.edu/">MyHaven</a></li>
