@@ -72,7 +72,7 @@ body {
 
 #content {
 	float: left;
-	width: 762px;
+	width: 740px;
 	padding: 15px;
 	overflow: auto;
 	background-color: #fff;
@@ -90,6 +90,15 @@ body {
 	margin: 0px;
 	position: relative;
 }
+#content3 {
+	float: left;
+	width: 762px;
+	padding: 15px;
+	background-color: #fff;
+	margin: 0px;
+	position: relative;
+}
+
 
 #split1{
 	float: left;
