@@ -1,4 +1,8 @@
 <?php 
+//Sysadmin note: This file does NOT contain the username or password to connect to the database.
+//So Don't even bother trying to connect with these credentials.
+//As if we'd be stupid enough to put our passwords on the internet...
+
 /*
 //Created by: David Hall
 //Created Date: 10/11/2014
