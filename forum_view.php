@@ -84,7 +84,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -124,7 +124,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -164,7 +164,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -204,7 +204,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -244,7 +244,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -284,7 +284,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -324,7 +324,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
@@ -364,7 +364,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div></td>
 					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="create_topic.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
 				</tr>
 			</tbody>';
 		}
