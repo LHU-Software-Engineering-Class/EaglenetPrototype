@@ -1,13 +1,13 @@
 <?php
+//forum.php
 /*
 Created by: Wesley Chubb
 Created Date: 10/29/14
+Last Modified: 10/29/2014
 Version 1.1
-
-forum.php
 */
 
-include 'header2.php';
+include 'connect.php';
 if ($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 {
 	include 'header2.php';
@@ -18,11 +18,10 @@ if ($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 	Sorry, you do not have sufficient rights to access this page.';
 	include 'footer2.php';
 }
-else
-{
+else{
 	include 'header.php';
 	include 'sidebar.php';
-	echo '<!--Begin Content -->'
+	echo '<!--Begin Content -->
 	<div id="content">
 	<div class="KonaBody">';
 	//first select the forum based on $_GET['cat_id']
@@ -31,23 +30,18 @@ else
 			FROM forums
 			WHERE forum_id=".mysqli_real_escape_string($con, $_GET['id']);
 
-	$result=mysql_query($con, $sql);
+	$result=mysqli_query($con, $sql);
 
-	if(!$result)
-	{
-		echo 'The forum could not be displayed, please try again later.'.mysql_error();
+	if(!$result){
+		echo 'The forum could not be displayed, please try again later.';
 	}
-	else
-	{
-		if (mysqli_num_rows($result) == 0)
-		{
+	else{
+		if (mysqli_num_rows($result) == 0){
 			echo 'This forum does not exist.';
 		}
-		else
-		{
+		else{
 			//display forum data
-			while($row = mysql_fetch_assoc($result))
-			{
+			while($row = mysqli_fetch_assoc($result)){
 				echo '<table class="tborder" cellpadding="6" cellspacing="1" border="0" width="100%" align="center">
 				<thead>
 					<tr align="center">
@@ -57,14 +51,14 @@ else
 						</td>
 						<td class="thead">Last Post
 						</td>
-						>td class="thead">Posts
+						<td class="thead">Posts
 						</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td class="tcat" colspan="5">
-							<a href="forum.php?id='.$row['forum_id'].'"><strong>'.$row[forum_name'].'</strong></a>
+							<a href="forum.php?id='.$row['forum_id'].'"><strong>'.$row['forum_name'].'</strong></a>
 						</td>
 					</tr>
 				</tbody>';
