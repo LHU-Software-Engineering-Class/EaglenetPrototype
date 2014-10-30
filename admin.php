@@ -143,7 +143,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	</div>';
 }
 	//Updates user_status boolean to true
-	if (!empty($_POST['deactivate-user'])) {
+	if (!empty($_POST['activate-user'])) {
 		$username = mysqli_real_escape_string($con, $_POST['user_name']);
 		$sql = "UPDATE users SET user_status = true WHERE user_name = '$username'";
 		$result = mysqli_query($con, $sql);
@@ -155,7 +155,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 		}
 	}
 	//checks if activate/deactivate user form is filled and updates user_status boolean to false
-	if (!empty($_POST['activate-user'])) {
+	if (!empty($_POST['deactivate-user'])) {
 		$username = mysqli_real_escape_string($con, $_POST['user_name']);
 		$sql = "UPDATE users SET user_status = false WHERE user_name = '$username'";
 		$result = mysqli_query($con, $sql);
