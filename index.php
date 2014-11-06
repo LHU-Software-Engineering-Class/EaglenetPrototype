@@ -2,8 +2,8 @@
 /*
 //Created by: David Hall
 //Created Date: 10/11/2014
-//Last Modified: 10/27/2014
-//Version 3.0
+//Last Modified: 11/6/2014
+//Version 4.0
 */
 
 include 'connect.php';
@@ -93,11 +93,15 @@ else{
 					}
 					else{
 						//put the signed_in, user_id, user_name and user_level values in the $_SESSION, so we can use it at various pages
+						$user = $row['user_id'];
 						$_SESSION['signed_in'] = true;
 						$_SESSION['user_id'] = $row['user_id'];
 						$_SESSION['user_name'] = $row['user_name'];
 						$_SESSION['user_level'] = $row['user_level'];
 						$_SESSION['user_status'] = $row['user_status'];
+						$sqlx = "UPDATE users SET user_last_login = NOW() where user_id= ".$user."";
+						$resultx = mysqli_query($con,$sqlx);
+						
 						echo ' Welcome, ' . $_SESSION['user_name'] . '. <a href="start.php">Proceed to the start page</a>.<br /><br />
 						Or wait 5 seconds and you will be taken to the start page.';
 						
