@@ -1,7 +1,4 @@
 <?php
-include 'connect.php';
-include 'header2.php';
-include 'sidefiller.php';
 /*
 //Created by: Greg Hall
 //Created Date: 10/29/2014
