@@ -1,3 +1,4 @@
+<?php
 /*
 //created by: Joe Taylor
 //Version 1.0
@@ -102,6 +103,3 @@ echo 'Thread name successfully changed to '.$thread_subject.'<br/>';
 }
 include 'footer.php';
 }
-
-
-

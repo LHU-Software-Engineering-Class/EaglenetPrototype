@@ -12,7 +12,7 @@ include 'header2.php';
 include 'sidefiller.php';
 
 echo'<!-- Begin Content -->
-	<div id="content2">';
+	<div id="content">';
 echo '<h1>Welcome to the Eaglenet</h1>';
 echo '<h2>A page for LHU Students designed by LHU students</h2>';
 //divide the page into two columns
@@ -21,12 +21,66 @@ echo '<div id ="split1"><h3>Create your new account<br/>
 //user sign up form do nothing untild submitted
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	echo '<form name="Form1" method="post" action"">
-		Username: <input type="text" name="user_name"/>@lhup.edu<br/>
-		Password: <input type="password" name="user_pass"><br/>
-		Password again: <input type="password" name="user_pass_check"><br/>
-		<input type="submit" value="Submit" /><br/>
-	 </form>';
+	<table>	
+	<tr>
+		<td><strong>First name: </strong></td>
+		<td><input type="text" name="user_fname" size="15"/></td>
+	</tr>
+	<tr>
+		<td><strong>Last name: </strong></td>
+		<td><input type="text" name="user_lname" size="15"/></td>
+	</tr>
+	<tr>
+		<td><strong>Username: </strong></td>
+		<td><input type="text" name="user_name" size="15"/>@lhup.edu</td>
+	</tr>
+	<tr>
+		<td><strong>Password: </strong></td>
+		<td><input type="password" name="user_pass" size="15"></td>
+	</tr>
+	<tr>	
+		<td><strong>Password again: </strong></td>
+		<td><input type="password" name="user_pass_check" size="15"></td>
+	</tr>
+	<tr>	
+		<td></td>
+		<td><strong>Choose an Avatar:</strong></td>
+	</tr>
+	</table>';
+	
+echo"<table>	
+		<tr>
+			<td><img src='images/avatar1.png' alt='avatar1' style='width:90px;height:90px'></td>
+			<td><img src='images/avatar2.png' alt='avatar2' style='width:90px;height:90px'></td>
+			<td><img src='images/avatar3.png' alt='avatar3' style='width:90px;height:90px'></td>
+		</tr>
+		<tr>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar1'></td>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar2'></td>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar3'></td>
+		</tr>
+		<tr>
+			<td><img src='images/avatar4.png' alt='avatar4' style='width:90px;height:90px'></td>
+			<td><img src='images/avatar5.png' alt='avatar5' style='width:90px;height:90px'></td>
+			<td><img src='images/avatar6.png' alt='avatar6' style='width:90px;height:90px'></td>
+		</tr>
+		<tr>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar4'></td>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar5'></td>
+			<td><Input type = 'Radio' Name ='avatarchoice' value= 'avatar6'></td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+			<td>&nbsp</td>
+			<td><input type='Submit' name = 'Submit1' value='Submit' /></td>
+		</tr>
+		</table>
+	</form>";
 }
+
 //user has submitted their information. now check to see if it is valid
 else{
 	//check if username field has been filled correctly and does not violate rules
@@ -75,10 +129,49 @@ else{
 		//take the form values and put into reusable php variables
 		//the md5 function hashes the password
 		//Email address is formed from username + @lhup.edu
+		$userlname = mysqli_real_escape_string($con, $_POST['user_fname']);
+		$userfname =mysqli_real_escape_string($con, $_POST['user_lname']);
 		$username = mysqli_real_escape_string($con, $_POST['user_name']);
 		$userpass = hash('sha256',$_POST['user_pass']);
 		$useremail = mysqli_real_escape_string ($con,$_POST['user_name']. "@lhup.edu");
 		$uniq_code = uniqid();
+		
+		$status1 = 'unchecked';
+		$status2 = 'unchecked';
+		$status3 = 'unchecked';
+		$status4 = 'unchecked';
+		$status5 = 'unchecked';
+		$status6 = 'unchecked';
+
+		if (isset($_POST['avatarchoice'])){
+			$selected_radio = $_POST['avatarchoice'];
+			if ($selected_radio == 'avatar1') {
+				$status1 = 'checked';
+				$useravatar = $selected_radio;
+			}
+			else if ($selected_radio == 'avatar2') {
+				$status2 = 'checked';
+				$useravatar = $selected_radio;
+			}
+			else if ($selected_radio == 'avatar3') {
+				$status3 = 'checked';
+				$useravatar = $selected_radio;
+			}
+			else if ($selected_radio == 'avatar4') {
+				$status4 = 'checked';
+				$useravatar = $selected_radio;
+			}
+			else if ($selected_radio == 'avatar5') {
+				$status5 = 'checked';
+				$useravatar = $selected_radio;
+			}
+			else if ($selected_radio == 'avatar6') {
+				$status6 = 'checked';
+				$useravatar = $selected_radio;
+			}
+		}
+		else 
+			$useravatar = 'avatar1';
 		
 		//Email with verification code sent to email generated
 		include 'mail.php';
@@ -93,7 +186,7 @@ else{
 		} 
 		//if email was sent successfully submit the data to the database
 		else {
-			$sql = "INSERT INTO users (user_name, user_pass, user_email, user_date, user_level, user_verif, user_status)VALUES ('$username','$userpass', '$useremail', NOW(), 0, '$uniq_code', false)";
+			$sql = "INSERT INTO users (user_fname, user_lname, user_name, user_pass, user_email, user_date, user_level, user_verif, user_status, user_avatar)VALUES ('$userfname','$userlname','$username','$userpass','$useremail', NOW(), 0, '$uniq_code', false, '$useravatar')";
 			$result = mysqli_query($con, $sql);
 			
 			//if user data can not be inserted show error

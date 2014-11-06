@@ -114,7 +114,7 @@ else{
 									</div>
 								</td>
 								<td class="alt2"><span style="float:right">
-									<a href=""><img src="images/smallnewtopic.gif" alt="" border="0">
+									<a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0">
 									</a>
 									</span>14
 								</td>
