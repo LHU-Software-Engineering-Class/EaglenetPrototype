@@ -1,10 +1,11 @@
 <?php
-//reply.php
 /*
-//Created by: Rob Shelly
-//Created Date: 10/29/2014
-//Last Modified: 11/8/2014
-//Version 1.1
+File name: reply.php
+Created by: Rob Shelly
+Created Date: 10/29/2014
+Last Modified: 11/8/2014
+Last Modified by: David Hall
+Version 1.1
 */
 include 'connect.php';
 if($_SERVER['REQUEST_METHOD'] != 'POST'){

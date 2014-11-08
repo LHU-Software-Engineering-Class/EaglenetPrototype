@@ -1,10 +1,11 @@
 <?php
-//forum.php
 /*
+File name: forum.php
 Created by: Wesley Chubb
 Created Date: 10/29/14
-Last Modified: 10/29/2014
-Version 1.1
+Last Modified By: David Hall
+Last Modified Date: 11/8/2014 9:30 AM
+Version 2.0
 */
 
 include 'connect.php';

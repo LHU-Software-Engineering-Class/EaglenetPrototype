@@ -1,8 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/25/2014
-//Version 3.0
+File name: forum_create.php
+Created by: David Hall
+Created Date: 10/25/2014
+Last Modified by: David Hall
+Last Modified Date: 10/25/2014
+Version 3.0
 */
 include 'connect.php';
 // Access control test. Tests if session variables are set to valid values

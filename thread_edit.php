@@ -1,9 +1,11 @@
 <?php
 /*
-//created by: Joe Taylor
-//Created Date: 11/4/2014
-//Version 1.0
-//thread_edit.php
+File name: thread_edit.php
+Created by: Joe Taylor
+Created Date: 11/4/2014
+Last Modified By: 
+Last Modified Date: 
+Version 1.0
 */
 include 'connect.php';
 //Access control test. Tests is session variables are set to valid values

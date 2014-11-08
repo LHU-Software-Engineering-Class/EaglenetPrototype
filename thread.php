@@ -1,5 +1,13 @@
 <?php
-	include 'connect.php';
+/*
+File name: thread.php
+Created by: Dan Muthler
+Created Date: 10/29/2014
+Last Modified By: David Hall
+Last Modified Date: 11/8/2014 10:29AM
+Version 3.0
+*/
+include 'connect.php';
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
 	include 'header2.php';
 	include 'sidefiller.php';
@@ -19,7 +27,8 @@ else {
 				threads.thread_id,
 				threads.thread_subject,
 				threads.thread_cat,
-				forums.forum_name
+				forums.forum_name,
+				forums.forum_id
 			FROM
 				threads
 			LEFT JOIN
@@ -43,7 +52,7 @@ else {
 					<thead>	
 					<tr>
 						<td class="tcat" colspan="5" >
-							Forum: '.$row['forum_name'].'
+							Forum: <a href="forum.php?id='.$row['forum_id'].'">'.$row['forum_name'].'</a>
 						</td>
 					</tr>
 					<tr>

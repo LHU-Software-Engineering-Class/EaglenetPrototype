@@ -1,10 +1,11 @@
 <?php
-//forum_view.php
 /*
+File name: forum_view.php
 Created by: Wesley Chubb
 Created Date: 10/29/2014
-Last Modified: 10/29/2014
-Version 1.1
+Last Modified by: David Hall
+Last Modified Date: 11/8/2014 10:30 AM
+Version 2.0
 */
 
 include 'connect.php';

@@ -1,9 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/11/2014
-//Last Modified: 11/6/2014
-//Version 4.0
+File name: index.php
+Created by: David Hall
+Created Date: 10/11/2014
+Last Modified by: David Hall
+Last Modified: 11/6/2014
+Version 4.0
 */
 
 include 'connect.php';

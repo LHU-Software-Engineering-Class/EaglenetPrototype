@@ -1,9 +1,10 @@
 <?php
-//Advisor.php
 /*
-creator: robert shelly
-created: 11/5/14
-last modified: 11/5/14
+File name: advisor.php
+Created By: Robert Shelly
+Created Date: 11/5/14 6:00 PM
+Last Modified By: Robert Shelly
+Last Modified Date: 11/5/14 6:00PM
 version 1.0
 */
 	include 'connect.php';

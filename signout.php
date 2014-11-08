@@ -1,9 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/24/2014
-//Last Modified: 10/24/2014
-//Version 1.0
+File name: signout.php
+Created by: David Hall
+Created Date: 10/24/2014
+Last Modified by: David Hall
+Last Modified: 10/24/2014
+Version 1.0
 */
 
 //signout.php

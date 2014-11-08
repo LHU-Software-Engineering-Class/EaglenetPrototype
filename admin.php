@@ -1,8 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/28/2014
-//Version 3.0
+File name: admin.php
+Created by: David Hall
+Created Date: 10/28/2014
+Last Modified by: David Hall
+Last Modified Date: 10/28/2014
+Version 3.0
 */
 
 /*

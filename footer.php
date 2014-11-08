@@ -1,9 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/11/2014
-//Last Modified: 10/24/2014
-//Version 2.0
+File name: footer.php
+Created by: David Hall
+Created Date: 10/11/2014
+Last Modified by: David Hall
+Last Modified: 10/24/2014
+Version 2.0
 */
 ?>
 

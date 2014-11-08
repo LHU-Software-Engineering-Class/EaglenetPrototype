@@ -1,9 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/11/2014
-//Last Modified: 10/27/2014
-//Version 5.0
+File name: signup.php
+Created by: David Hall
+Created Date: 10/11/2014
+Last Modified by: David Hall
+Last Modified Date: 11/5/2014
+Version 6.0
 */
 
 //page elements imported

@@ -1,9 +1,11 @@
 <?php
 /*
-//Created by: David Hall
-//Created Date: 10/25/2014
-//Last Modified: 10/25/2014
-//Version 1.0
+File name: mail.php
+Created by: David Hall
+Created Date: 10/25/2014
+Last Modified by: David Hall
+Last Modified: 10/25/2014
+Version 1.0
 */
 
 //phpMailer auto generated email message
