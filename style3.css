@@ -99,7 +99,10 @@ body {
 	position: relative;
 }
 
-
+#post
+{
+	min-height: 100px;
+}
 #split1{
 	float: left;
 	width: 340px;
@@ -277,11 +280,12 @@ a:hover {
 	color: #FFFF66;
 	text-decoration: underline;
 }
+
 .thead
 {
 	background: #28497C;
 	color: #FFFFFF;
-	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
 }
 .thead a:link, .thead_alink
 {

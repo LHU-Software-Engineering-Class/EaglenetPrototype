@@ -205,7 +205,8 @@ else{
 		}
 	}
 }
-echo '</div>';
+echo '<br/><br/>All avatar images are public domain images from <a href = "http://pixabay.com">pixabay.com </a> and comply with CC0 public domain rules.
+</div>';
 echo '<div id ="split2"><h3>Already Signed Up Click Here to Log in<br/>
 ***********************************************************</h3>
 <a href="index.php"><h2>SIGN IN</h2></a>
