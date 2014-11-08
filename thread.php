@@ -1,13 +1,5 @@
 <?php
-//thread.php
-/*
-//Created by: Dan Muthler
-//Created Date: 10/29/2014
-//Last Modified By: David Hall
-//Last Modified Date: 11/8/2014 12:14AM
-//Version 2.0
-*/
-include 'connect.php';
+	include 'connect.php';
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
 	include 'header2.php';
 	include 'sidefiller.php';
@@ -56,17 +48,52 @@ else {
 					</tr>
 					<tr>
 						<td class="tcat" colspan="5" style ="padding-left:1em">
-							-Thread: '.$row['thread_subject'].'
+							-Thread: '.$row['thread_subject'] .'
 						</td>
 					</tr>
 					</thead>
 				</table>';
+				
+				// How many adjacent pages should be shown on each side?
+				$adjacents = 3;
+				/* 
+				   First get total number of rows in data table. 
+				   If you have a WHERE clause in your query, make sure you mirror it here.
+				*/
+				$query = "SELECT COUNT(*) as num FROM posts WHERE
+					post_topic = " . mysqli_real_escape_string($con,$_GET['id']);
+					
+				$num_result = mysqli_query($con,$query);
+				$total_pages = mysqli_fetch_array($num_result);
+				$total_pages = $total_pages['num'];
+				
+				/* Setup vars for query. */
+				$targetpage = "threadx.php";
+				$limit = 5;								 //how many items to show per page
+				$page = $_GET['page'];
+				if($page) 
+					$start = ($page - 1) * $limit; 			//first item to display on this page
+				else
+					$start = 0;								//if no page var is given, set start to 0
+				
+				/* Setup page vars for display. */
+				if ($page == 0) $page = 1;					//if no page var is given, default to 1.
+				$prev = $page - 1;							//previous page is page - 1
+				$next = $page + 1;							//next page is page + 1
+				$lastpage = ceil($total_pages/$limit);		//lastpage is = total pages / items per page, rounded up.
+				$lpm1 = $lastpage - 1;						//last page minus 1
+				
+				/* 
+					Now we apply our rules and draw the pagination object. 
+					We're actually saving the code to a variable in case we want to draw it more than once.
+				*/
 				
 				$posts_sql = "SELECT
 									posts.post_topic,
 									posts.post_content,
 									posts.post_date,
 									posts.post_by,
+									posts.post_title,
 									users.user_id,
 									users.user_name,
 									users.user_avatar,
@@ -80,14 +107,15 @@ else {
 								ON
 									posts.post_by = users.user_id
 								WHERE
-									posts.post_topic = " . mysqli_real_escape_string($con,$_GET['id']);
-									
+									posts.post_topic = " . mysqli_real_escape_string($con,$_GET['id'])."
+								LIMIT 
+									$start,$limit";
 				$posts_result = mysqli_query($con,$posts_sql);
 				if(!$posts_result){
+					mysqli_error($con);
 					echo '<tr><td>The posts could not be displayed, please try again later.</tr></td></table>';
 				}
 				else{
-					$post_num = 1;
 					while($posts_row = mysqli_fetch_assoc($posts_result)){
 						echo'<div style="padding:0px 0px 6px 0px">
 						<table class="tborder" cellpadding="6" cellspacing="1" border="0" width="100%" align="center" >
@@ -95,7 +123,7 @@ else {
 							<td class="thead" style ="padding-left:1em">
 								<div style="float:left">
 									&nbsp;
-									<strong>-Post #'.$post_num.'</strong>&nbsp;
+									<strong>-Post: '.$posts_row['post_title'].'</strong>&nbsp;
 								</div>
 								<div style="float:right">
 										Posted: ' . date('m-d-Y h:i A', strtotime($posts_row['post_date'])) . '
@@ -146,20 +174,94 @@ else {
 						</tr>
 						</table>
 						</div>';
-						$post_num = $post_num+1;
 					}
 				}
-					//show reply box
-				echo '<table class="topic" border="1">
-					<tr><td colspan="2"><h2>Post to: '.$row['thread_subject'].'</h2><br />
-						<form method="post" action="reply.php?id=' . $row['thread_id'] . '">
-							<textarea name="reply-content"></textarea><br /><br />
-							<input type="submit" value="Submit reply" />
-						</form></td></tr>';
-				echo '</table>';
+			}
+			
+			$pagination = "";
+			if($lastpage > 1)
+			{	
+				$pagination .= "<div class=\"pagination\">";
+				//previous button
+				if ($page > 1) 
+					$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$prev\">previous </a>";
+				else
+					$pagination.= "<span class=\"disabled\">previous </span>";	
+				
+				//pages	
+				if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
+				{	
+					for ($counter = 1; $counter <= $lastpage; $counter++)
+					{
+						if ($counter == $page)
+							$pagination.= "<span class=\"current\">$counter</span>";
+						else
+							$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$counter\">$counter</a>";					
+					}
+				}
+				elseif($lastpage > 5 + ($adjacents * 2))	//enough pages to hide some
+				{
+					//close to beginning; only hide later pages
+					if($page < 1 + ($adjacents * 2))		
+					{
+						for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++)
+						{
+							if ($counter == $page)
+								$pagination.= "<span class=\"current\">$counter</span>";
+							else
+								$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$counter\">$counter</a>";					
+						}
+						$pagination.= "...";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$lpm1\">$lpm1</a>";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$lastpage\">$lastpage</a>";		
+					}
+					//in middle; hide some front and some back
+					elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
+					{
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=1\">1 </a>";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=2\">2 </a>";
+						$pagination.= "...";
+						for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++)
+						{
+							if ($counter == $page)
+								$pagination.= "<span class=\"current\">$counter</span>";
+							else
+								$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$counter\">$counter</a>";					
+						}
+						$pagination.= "...";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$lpm1\">$lpm1</a>";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$lastpage\">$lastpage</a>";		
+					}
+					//close to end; only hide early pages
+					else
+					{
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=1\">1 </a>";
+						$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=2\">2 </a>";
+						$pagination.= "...";
+						for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++)
+						{
+							if ($counter == $page)
+								$pagination.= "<span class=\"current\">$counter </span>";
+							else
+								$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$counter\">$counter</a>";					
+						}
+					}
+				}
+				
+				//next button
+				if ($page < $counter - 1) 
+					$pagination.= "<a href=\"thread.php?id=".$_GET['id']."&page=$next\"> next </a>";
+				else
+					$pagination.= "<span class=\"disabled\"> next </span>";
+				$pagination.= "</div>\n";		
 			}
 		}
 	}
-	echo '</div>';
-	include 'footer.php';
 }
+
+?>
+
+
+
+<?=$pagination?>
+
