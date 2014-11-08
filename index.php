@@ -55,6 +55,8 @@ else{
 			echo '<li>' . $value . '</li>'; /* this generates a nice error list */
 		}
 		echo '</ul>';
+		echo '<br/><br/>This page will refresh in 5 seconds and take you back to the sign-in page.';
+		header( "refresh:5; url= index.php" );
 	}
 	else{
 		//the form has been posted without errors, so save it
@@ -64,7 +66,8 @@ else{
 					user_id,
 					user_name,
 					user_level,
-					user_status
+					user_status,
+					user_last_login
 				FROM
 					users
 				WHERE
@@ -76,6 +79,8 @@ else{
 			//something went wrong, display the error
 			echo '<br/>Something went wrong while signing in. Please try again later.';
 			//echo mysql_error(); //debugging purposes, uncomment when needed
+			echo '<br/><br/>This page will refresh in 5 seconds and take you back to the sign-in page.';
+			header( "refresh:5; url= index.php" );
 		}
 		else{
 			//the query was successfully executed, there are 2 possibilities
@@ -83,6 +88,8 @@ else{
 			//2. the query returned an empty result set, the credentials were wrong
 			if(mysqli_num_rows($result) == 0){
 				echo '<br/>You have supplied a wrong user/password combination. Please try again.';
+				echo '<br/><br/>This page will refresh in 5 seconds and take you back to the sign-in page.';
+				header( "refresh:5; url= index.php" );
 			}
 			else{
 				while($row = mysqli_fetch_assoc($result)){
@@ -99,8 +106,10 @@ else{
 						$_SESSION['user_name'] = $row['user_name'];
 						$_SESSION['user_level'] = $row['user_level'];
 						$_SESSION['user_status'] = $row['user_status'];
+						$_SESSION['user_last_login'] = $row['user_last_login'];
 						$sqlx = "UPDATE users SET user_last_login = NOW() where user_id= ".$user."";
 						$resultx = mysqli_query($con,$sqlx);
+						mysqli_error($con);
 						
 						echo ' Welcome, ' . $_SESSION['user_name'] . '. <a href="start.php">Proceed to the start page</a>.<br /><br />
 						Or wait 5 seconds and you will be taken to the start page.';

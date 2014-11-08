@@ -91,6 +91,7 @@ else{
 								<td class="alt1Active" align="left" id="f256">
 									<div>
 										<a href="thread.php?id='.$row['thread_id'].'"><strong>'.$row['thread_subject'].'</strong></a>
+										<a href="thread_edit.php?id='.$row['thread_id'].'"><img src="images/edit.png" alt=""></a>
 									</div>
 								</td>
 								<td class = "alt2">

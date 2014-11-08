@@ -18,7 +18,7 @@ if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
 else {
 	include 'header.php';
 	include 'sidebar.php';
-	echo<div 'id ="content">
+	echo '<div id ="content">
 	<div class ="kona body">
 	<table border="1" style="width 100%" align="center">
 		<tr>
@@ -38,6 +38,5 @@ else {
 			<td>Answer 3!</td>
 		</tr>
 	</table>';
-	include 'footer.php'
-	
+	include 'footer.php';
 }

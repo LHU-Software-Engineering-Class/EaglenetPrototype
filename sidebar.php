@@ -34,6 +34,9 @@
 			<li><a href="forum_view.php">Campus Housing</a></li>
 			<li><a href="forum_view.php">Local Attractions</a></li>
 			<li><a href="forum_view.php">Book Finder</a></li>
+			<li><a href="maps.php">Campus Maps</a></li>
+			<li><a href="advisor.php">Advisors FAQ</a></li>
+			<li><a href="technology.php">Technology Help</a></li>
 			</ul>
 	</div>
 <!-- End Sidebar -->

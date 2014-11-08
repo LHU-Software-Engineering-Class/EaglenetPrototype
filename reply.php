@@ -3,9 +3,10 @@
 /*
 //Created by: Rob Shelly
 //Created Date: 10/29/2014
-//Last Modified: 10/29/2014
-//Version 1.0
+//Last Modified: 11/8/2014
+//Version 1.1
 */
+include 'connect.php';
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	//someone is calling the file directly, which we don't want
 	echo 'This file cannot be called directly.';

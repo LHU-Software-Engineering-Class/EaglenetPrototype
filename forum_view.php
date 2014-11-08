@@ -26,19 +26,17 @@ echo '<!-- Begin Content -->
 	<thead>
 		<tr>
 			<td class="tcat" colspan="5">
-				<a href="">EagleNet Forums Navigation</a>
+				Welcome '.$_SESSION['user_name'].' Not you? <a href="signout.php">Sign out</a>
 			</td>
 		</tr>
 	</thead>
-	<thead>
-		<tr align="center">
-			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
-			<td class="thead">Last Post</td>
-			<td class="thead">Threads</td>
-			<td class="thead">Posts</td>  
-		</tr>
-	</thead>';
+		<tr align ="right">
+			<td colspan="5">
+				Last Login: '.date('m-d-Y h:i A', strtotime($_SESSION['user_last_login'])).'
+			</td>
+		</tr>';
+
+	
 for($cat = 1; $cat <20; $cat++){
 	$sql = "SELECT
 			forum_id,
@@ -56,13 +54,22 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-							<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
+				
 				<tr align="center">
 					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
 					<td class="alt1Active" align="left" id="f256">
@@ -96,11 +103,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -136,11 +150,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -176,11 +197,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -216,11 +244,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -256,11 +291,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -296,11 +338,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
@@ -336,11 +385,18 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						<a href="">'.$row['cat_desc'].'</a>
+						Category: '.$row['cat_desc'].'
 					</td>
 					</tr>
 			</tbody>';
 		}
+		echo'<tr align="center">
+			<td class="thead">&nbsp;</td>
+			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead">Last Post</td>
+			<td class="thead">Threads</td>
+			<td class="thead">Posts</td>  
+		</tr>';
 		while($row = mysqli_fetch_assoc($result)){
 			echo '<tbody id="collapseobj_forumbit_12" style="">
 				<tr align="center">
