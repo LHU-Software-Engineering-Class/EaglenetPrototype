@@ -25,8 +25,8 @@ Version 1.1
 	$mail->AltBody = "Plain text version: You have registered to use the EagleNet discussion forum. 
 	Please copy this number ".$uniq_code." and click here to go here to activate your account http://dev.eaglenet.lhup.edu/verification.php
 	Thank you for using the EagleNet";
-	$mail->Body = "<img src="EmailLogo.jpg" alt="Eagle Logo"</br></br>
-        You have requested an account on the <b>EagleNet</b>Discussion forum<br/><br/>
+	$mail->Body = "
+        You have requested an account on the <b>EagleNet </b>Discussion forum<br/><br/>
 	Please copy this number &nbsp;&nbsp;&nbsp;".$uniq_code."</br> 
         and click here to <a href='http://dev.eaglenet.lhup.edu/verification.php'> activate your account</a></br>
         Disregard this email if you did not request an account from EagleNet";
