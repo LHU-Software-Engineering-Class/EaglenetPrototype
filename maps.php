@@ -1,7 +1,7 @@
 <?php
 
 /*
-File name: map.php
+File name: maps.php
 Created By: AJ Radle
 Created Date: 11/11/2014
 Last Modified By: AJ Radle
