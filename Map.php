@@ -25,7 +25,7 @@ else
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<div id ="content">
-	<div class ="kona body">
+	<div class ="kona body">';
 
 	/* Place the image here!*/
 	
