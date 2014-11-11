@@ -4,8 +4,8 @@ File name: thread.php
 Created by: Dan Muthler
 Created Date: 10/29/2014
 Last Modified By: David Hall
-Last Modified Date: 11/8/2014 10:29AM
-Version 3.0
+Last Modified Date: 11/11/2014 5:36PM
+Version 4.0
 */
 include 'connect.php';
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
@@ -21,7 +21,7 @@ else {
 	include 'sidebar.php';
 	echo '<!-- Begin Content -->
 		<div id="content">
-		<div class="KonaBody">';
+		<div>';
 		
 	$sql = "SELECT
 				threads.thread_id,
@@ -36,7 +36,7 @@ else {
 			ON
 				threads.thread_cat= forums.forum_id
 			WHERE
-				threads.thread_id = " . mysqli_real_escape_string($con,$_GET['id']);
+				threads.thread_id = " . mysqli_real_escape_string($con,$_GET['id']); 
 	$result = mysqli_query($con,$sql);
 	
 	if(!$result){
@@ -49,18 +49,28 @@ else {
 		else{
 			while($row = mysqli_fetch_assoc($result)){
 				echo'<table class="tborder" cellpadding="6" cellspacing="1" border="0" width="100%" align="center">
-					<thead>	
+					<tr align ="right">
+						<td class="thead" colspan="5">
+							Welcome '.$_SESSION['user_name'].' Not you? <a href="signout.php">Sign out</a>
+						</td>
+					</tr>
+					<tr align ="right">
+						<td colspan="5">
+							Last Login: '.date('m-d-Y h:i A', strtotime($_SESSION['user_last_login'])).'
+						</td>
+					</tr>
+					
 					<tr>
 						<td class="tcat" colspan="5" >
-							Forum: <a href="forum.php?id='.$row['forum_id'].'">'.$row['forum_name'].'</a>
+							Forum: <a href="forum.php?id='.$row['forum_id'].'&page=1">'.$row['forum_name'].'</a>
 						</td>
 					</tr>
 					<tr>
 						<td class="tcat" colspan="5" style ="padding-left:1em">
 							-Thread: '.$row['thread_subject'] .'
+							 <a style="float:right" class="button" href="post_create.php?id='.$_GET['id'].'">CREATE A POST</a>
 						</td>
 					</tr>
-					</thead>
 				</table>';
 				
 				// How many adjacent pages should be shown on each side?
@@ -70,7 +80,7 @@ else {
 				   If you have a WHERE clause in your query, make sure you mirror it here.
 				*/
 				$query = "SELECT COUNT(*) as num FROM posts WHERE
-					post_topic = " . mysqli_real_escape_string($con,$_GET['id']);
+					post_topic = " . mysqli_real_escape_string($con,$_GET['id'])." and post_status !=0 and (post_type = 1 or post_type = 2)";
 					
 				$num_result = mysqli_query($con,$query);
 				$total_pages = mysqli_fetch_array($num_result);
@@ -98,6 +108,7 @@ else {
 				*/
 				
 				$posts_sql = "SELECT
+									posts.post_id,
 									posts.post_topic,
 									posts.post_content,
 									posts.post_date,
@@ -116,12 +127,11 @@ else {
 								ON
 									posts.post_by = users.user_id
 								WHERE
-									posts.post_topic = " . mysqli_real_escape_string($con,$_GET['id'])."
+									posts.post_topic = " . mysqli_real_escape_string($con,$_GET['id'])." and post_status !=0 and (post_type = 1 or post_type = 2)
 								LIMIT 
 									$start,$limit";
 				$posts_result = mysqli_query($con,$posts_sql);
 				if(!$posts_result){
-					mysqli_error($con);
 					echo '<tr><td>The posts could not be displayed, please try again later.</tr></td></table>';
 				}
 				else{
@@ -132,7 +142,7 @@ else {
 							<td class="thead" style ="padding-left:1em">
 								<div style="float:left">
 									&nbsp;
-									<strong>-Post: '.$posts_row['post_title'].'</strong>&nbsp;
+									<strong>-Post: </strong><a href="post.php?id= '.$posts_row['post_id'].'&page=1">'.$posts_row['post_title'].'</a>&nbsp;
 								</div>
 								<div style="float:right">
 										Posted: ' . date('m-d-Y h:i A', strtotime($posts_row['post_date'])) . '
@@ -141,7 +151,6 @@ else {
 						</tr>
 						<tr>
 							<td class="tcat" style="padding:0px">
-								<!-- user info -->
 								<table cellpadding="0" cellspacing="6" border="0" width="100%">
 								<tr>
 									<td class="tcat"><img src="images/'.$posts_row['user_avatar'].'.png" width="90" height="90" alt="Users Avatar" border="0" /></td>
@@ -163,21 +172,19 @@ else {
 											<div>
 												Posts: ' . $posts_row['post_count'] . '
 											</div>
-											<div>    
+											<div> 
+											<a style="float:right" class="button" href="reply_create.php?id='.$posts_row['post_id'].'">REPLY</a>
 											</div>
 										</div>
 									</td>
 								</tr>
 								</table>
-								<!-- / user info -->
 							</td>
 						</tr>
 						<tr>
 							<td>
-							<!-- message, attachments, sig -->
-								<!-- message -->
 								<div id = "post">
-									' .htmlentities(stripslashes($posts_row['post_content'])) . '
+									'.htmlentities(stripslashes($posts_row['post_content'])).'
 								</div>
 							</td>
 						</tr>
@@ -267,10 +274,10 @@ else {
 		}
 	}
 }
-
+echo' <a style="float:right" class="button" href="post_create.php?id='.$_GET['id'].'">CREATE A POST</a>';
 ?>
 
 
 
-<?=$pagination?>
+<?=$pagination; include 'footer.php';?>
 

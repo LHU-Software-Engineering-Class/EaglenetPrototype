@@ -4,8 +4,8 @@ File name: sidebar.php
 Created by: David Hall
 Created Date: 10/11/2014
 Last Modified by: David Hall
-Last Modified Date: 10/11/2014
-Version 1.0
+Last Modified Date: 11/11/2014 5:38PM
+Version 2.0
 */
 ?>
 
@@ -16,15 +16,15 @@ Version 1.0
 				$_SESSION['signed_in'];
 				if($_SESSION['signed_in'])
 				{
-					echo '<li class="filler">Hello <b>' . htmlentities($_SESSION['user_name']) . '</b> Not you?</li>
+					echo '<li class="filler">Hello <b>' . htmlentities($_SESSION['user_name']) . '</b></li>
 					<li><a href="signout.php">Sign out</a></li>
-					<li class="filler">&nbsp;----------------------------</li>';
+					<li class="filler">&nbsp;-------------------------</li>';
 				}
 				else
 				{
 					echo '<li><a href="index.php">Sign in</a></li> 
 					<li><a href="signup.php">Create an account</a></li>
-					<li class="filler">&nbsp;----------------------------</li>';
+					<li class="filler">&nbsp;-------------------------</li>';
 				}
 			?>
 			<li><a href="start.php">Home</a></li>

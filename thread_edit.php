@@ -3,9 +3,9 @@
 File name: thread_edit.php
 Created by: Joe Taylor
 Created Date: 11/4/2014
-Last Modified By: 
-Last Modified Date: 
-Version 1.0
+Last Modified By: David Hall
+Last Modified Date: 11/10/2014
+Version 2.0
 */
 include 'connect.php';
 //Access control test. Tests is session variables are set to valid values
@@ -14,18 +14,25 @@ if($_SESSION['signed_in'] == false | ($_SESSION['user_status']!= true)){
 	include 'sidefiller.php';
 	echo '<!-- Begin Content-->
 	<div id = "content2">
-	Sorry, you do not have sufficient rights to access this page.
-	</div>';
+	Sorry, you do not have sufficient rights to access this page.';
 	include 'footer2.php';
+}
+//Test if user has moderator privileges or above
+else if ($_SESSION['user_level'] < 1){
+	include 'header.php';
+	include 'sidebar.php';
+	echo '<div id = "content2">
+	Sorry, you do not have sufficient rights to edit threads.';
+	include 'footer.php';
 }
 //If user is logged in, the user is activated and has access privileges to this page show the page
 else{
-	include 'header2.php';
-	include 'sidefiller.php';
+	include 'header.php';
+	include 'sidebar.php';
 	echo '<!-- Begin Content-->
 	<div id = "content2">
 	<div class = "KonaBody">';
-	//Display the form do nothing with data until user sunmits form
+	//Display the form do nothing with data until user submits form
 	$threadId = $_GET['id'];
 	if($_SERVER['REQUEST_METHOD'] != 'POST'){
 		$sql = "SELECT * FROM threads where threads.thread_id = ".mysqli_real_escape_string($con,$_GET['id'])." and
@@ -90,9 +97,9 @@ else{
 	}
 	else{
 		$thread_subject = mysqli_real_escape_string($con, $_POST['thread_subject']);
-		$thread_cat = mysqli_real_escape_string($con, $_POST['thread_subject']);
+		$thread_cat = mysqli_real_escape_string($con, $_POST['thread_cat']);
 		$sql = "UPDATE threads set thread_subject = '$thread_subject', thread_cat = '$thread_cat' where thread_id = '$threadId'";
-		$result = mysql_query($con,$sql);
+		$result = mysqli_query($con,$sql);
 		if(!$result){
 			//something went wrong, display error
 			echo 'An error occured while inserting your data. Please try again later.<br/><br/>'.mysqli_error($con);
@@ -100,7 +107,7 @@ else{
 			$result = mysqli_query($con,$sql);
 		}
 		else{
-			echo 'Thread name successfully changed to '.$thread_subject.'<br/>';
+			header( "refresh:0; url= thread.php?id=$threadId&page=1");
 		}
 	}
 include 'footer.php';

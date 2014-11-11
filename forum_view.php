@@ -4,8 +4,8 @@ File name: forum_view.php
 Created by: Wesley Chubb
 Created Date: 10/29/2014
 Last Modified by: David Hall
-Last Modified Date: 11/8/2014 10:30 AM
-Version 2.0
+Last Modified Date: 11/11/2014 5:30 PM
+Version 3.0
 */
 
 include 'connect.php';
@@ -22,20 +22,18 @@ include 'header.php';
 include 'sidebar.php';
 echo '<!-- Begin Content -->
 <div id="content">
-<div class="KonaBody">
-<table class="tborder" cellpadding="6" cellspacing="1" border="0" width="100%" align="center">
-	<thead>
-		<tr>
-			<td class="tcat" colspan="5">
-				Welcome '.$_SESSION['user_name'].' Not you? <a href="signout.php">Sign out</a>
-			</td>
-		</tr>
-	</thead>
-		<tr align ="right">
-			<td colspan="5">
-				Last Login: '.date('m-d-Y h:i A', strtotime($_SESSION['user_last_login'])).'
-			</td>
-		</tr>';
+<div>
+<table class="tborder" cellpadding="6" cellspacing="0" border="0" width="100%" align="center">
+	<tr align ="right">
+		<td class="thead" colspan="5">
+			Welcome '.$_SESSION['user_name'].' Not you? <a href="signout.php">Sign out</a>
+		</td>
+	</tr>
+	<tr align ="right">
+		<td colspan="5">
+			Last Login: '.date('m-d-Y h:i A', strtotime($_SESSION['user_last_login'])).'
+		</td>
+	</tr>';
 
 	
 for($cat = 1; $cat <20; $cat++){
@@ -55,373 +53,387 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
 		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==2){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==3){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==4){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==5){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==6){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==7){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
 	}
 	elseif ($cat ==8){
-		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
+				$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
-						Category: '.$row['cat_desc'].'
+						Forum Category: '.$row['cat_desc'].'
 					</td>
-					</tr>
+				</tr>
 			</tbody>';
 		}
 		echo'<tr align="center">
 			<td class="thead">&nbsp;</td>
-			<td class="thead" width="100%" align="left">Forum</td>
+			<td class="thead" width="100%" align="left">Forum Name</td>
 			<td class="thead">Last Post</td>
 			<td class="thead">Threads</td>
 			<td class="thead">Posts</td>  
 		</tr>';
+		
 		while($row = mysqli_fetch_assoc($result)){
-			echo '<tbody id="collapseobj_forumbit_12" style="">
-				<tr align="center">
-					<td class="alt2"><img src="images/forum_old.gif" alt="" border="0" id="forum_statusicon_256"></td>
-					<td class="alt1Active" align="left" id="f256">
+			echo '<tbody>
+				<tr class="border_bottom" align="center">
+					<td><img src="images/forum_old.gif" alt=""></td>
+					<td align="left">
 						<div>
-							<a href="forum.php?id=' . $row['forum_id'] . '"><strong>'. $row['forum_name'] .'</strong></a>
-						</div></td>
-					<td class="alt2">
+							<a href="forum.php?id='.$row['forum_id'].'&page=1"><strong>'. $row['forum_name'] .'</strong></a>
+						</div>
+					</td>
+					<td>
 						<div class="smallfont" align="left">
 							<div>
 								<span style="white-space:nowrap">
-								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>asdfadsf</strong></a></span>
+								<a href="" style="white-space:nowrap" title="Go to first unread post"><strong>TODO Last post title TODO</strong></a></span>
 							</div>
 							<div style="white-space:nowrap">
-								by <a href="">dkh1058</a>
+								By: TODO
 							</div>
 							<div align="right" style="white-space:nowrap">
-								08-29-2014 <span class="time">03:26 PM</span>
-								<a href=""><img class="inlineimg" src="images/lastpost.gif" alt="Go to last post" border="0" title="Go to last post"></a>
+								<span>Date: TODO</span>
 							</div>
-						</div></td>
-					<td class="alt1">2</td>
-					<td class="alt2"><span style="float:right"><a href="thread_create.php"><img src="images/smallnewtopic.gif" alt="" border="0"></a></span>14</td>
+						</div>
+					</td>
+					<td> 2 </td>
+					<td> 14 </td>
 				</tr>
 			</tbody>';
 		}
