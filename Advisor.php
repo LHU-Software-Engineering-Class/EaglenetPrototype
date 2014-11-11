@@ -4,7 +4,7 @@ File name: advisor.php
 Created By: Robert Shelly
 Created Date: 11/5/14 6:00 PM
 Last Modified By: Robert Shelly
-Last Modified Date: 11/5/14 6:00PM
+Last Modified Date: 11/11/14 12:01PM
 version 1.0
 */
 	include 'connect.php';
@@ -20,6 +20,7 @@ else {
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<div id ="content">
+	<body bgcolor="#A52A2A">
 	<div class ="kona body">
 	<table border="1" style="width 100%" align="center">
 		<tr>
