@@ -8,12 +8,16 @@ Last Modified by: David Hall
 Version 1.1
 */
 include 'connect.php';
+include 'strip_html_tags.php';
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	//someone is calling the file directly, which we don't want
 	echo 'This file cannot be called directly.';
 }
 else{
 	//a real user posted a real reply
+	$post_content = strip_html_tags($_POST['post_content']);
+	$post_title = strip_html_tags($_POST['post_title']);
+	$post_type = strip_html_tags($_POST['post_type']);
 	$sql = "INSERT 
 		INTO posts
 		(post_content,
@@ -24,9 +28,9 @@ else{
 		post_by
 		)
 		VALUES (
-			'".$_POST['post_content']."',
-			'".$_POST['post_title']."',
-			'".$_POST['post_type']."',
+			'".$post_content."',
+			'".$post_title."',
+			'".$post_type."',
 			NOW(),
 			".mysqli_real_escape_string($con,$_GET['id']).",
 			".$_SESSION['user_id'].")";
