@@ -40,9 +40,15 @@ for($cat = 1; $cat <20; $cat++){
 	$sql = "SELECT
 			forum_id,
 			forum_name,
-			forum_description
+			forum_description,
+			thread_counter,
+			sum (post_counter) as total
 		FROM
 			forums
+		JOIN
+			threads
+		ON
+			forum_id = thread_cat
 		WHERE
 			forum_cat = $cat";
 	$result = mysqli_query($con,$sql);
@@ -89,8 +95,8 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div>
 					</td>
-					<td> 2 </td>
-					<td> 14 </td>
+					<td> '.$row['thread_counter'].'</td>
+					<td> '. $row['total'] .' </td>
 				</tr>
 			</tbody>';
 		}
