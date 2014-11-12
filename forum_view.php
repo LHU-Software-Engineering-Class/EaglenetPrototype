@@ -40,7 +40,8 @@ for($cat = 1; $cat <20; $cat++){
 	$sql = "SELECT
 			forum_id,
 			forum_name,
-			forum_description
+			forum_description,
+			thread_counter
 		FROM
 			forums
 		WHERE
@@ -138,7 +139,7 @@ for($cat = 1; $cat <20; $cat++){
 							</div>
 						</div>
 					</td>
-					<td> 2 </td>
+					<td> '.$row['thread_counter'].' </td>
 					<td> 14 </td>
 				</tr>
 			</tbody>';
