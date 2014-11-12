@@ -20,7 +20,7 @@ else {
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<div id ="content">
-	<body bgcolor="#A52A2A">
+	<body style="background-color:Orange">
 	<div class ="kona body">
 	<table border="1" style="width 100%" align="center">
 		<tr>
