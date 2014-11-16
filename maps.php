@@ -27,8 +27,8 @@ else
 	echo '<div id ="content">
 	<div class ="kona body">';
 
-	/* Place the image here!
-	<IMG SRC="LHU_Map.png" ALT="some text" WIDTH=32 HEIGHT=32>*/
+	/* Place the image here!*/
+	<IMG SRC="images/LHU_Map.png" ALT="Map of LHU" WIDTH=1004 HEIGHT=757>*/
 	
 	include 'footer.php';
 }
