@@ -28,7 +28,7 @@ else
 	<div class ="kona body">';
 
 	/* Place the image here!*/
-	echo '<IMG SRC="/images/LHU_Map.PNG" ALT="Map of LHU" WIDTH=502 HEIGHT=379>';
+	echo '<IMG SRC="/images/LHU_Map.PNG" ALT="Map of LHU" WIDTH=1004 HEIGHT=756>';
 	
 	include 'footer.php';
 }
