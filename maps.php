@@ -11,6 +11,7 @@ version 1.0
 
 include 'connect.php';
 
+/*This makes sure the person is signed in. If not, rights are denied*/
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 {
 	include 'header2.php';
@@ -20,6 +21,7 @@ if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 	Sorry, you do not have sufficient rights to access this page.';
 	include 'footer2.php';
 }
+/*Else, load the page*/
 else 
 {
 	include 'header.php';
@@ -27,8 +29,10 @@ else
 	echo '<div id ="content">
 	<div class ="kona body">';
 
-	/* Place the image here!*/
-	echo '<IMG SRC="/images/LHU_Map.PNG" ALT="Map of LHU" WIDTH=1004 HEIGHT=756>';
+	/* Place the images here!*/
+	echo '<IMG SRC="/images/Main_Campus_Map.jpg" ALT="Campus Map" WIDTH=1558 HEIGHT=1186>';	
+	echo '<IMG SRC="/images/LHU_Map.PNG" ALT="Parking at LHU" WIDTH=1004 HEIGHT=756>';
+	
 	
 	include 'footer.php';
 }
