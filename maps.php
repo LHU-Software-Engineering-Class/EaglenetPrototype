@@ -5,7 +5,7 @@ File name: maps.php
 Created By: AJ Radle
 Created Date: 11/11/2014
 Last Modified By: AJ Radle
-Last Modified Date: 11/16/2014
+Last Modified Date: 11/18/2014
 version 1.0
 */
 
@@ -28,7 +28,7 @@ else
 	<div class ="kona body">';
 
 	/* Place the image here!*/
-	echo '<IMG SRC="/images/LHU_Map.png" ALT="Map of LHU" WIDTH=1004 HEIGHT=757>';
+	echo '<IMG SRC="/images/LHU_Map.png" ALT="Map of LHU" WIDTH=502 HEIGHT=379>';
 	
 	include 'footer.php';
 }
