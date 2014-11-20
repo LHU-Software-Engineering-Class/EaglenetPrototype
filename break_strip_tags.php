@@ -8,5 +8,6 @@ Last Modified Date: 11/18/14
 Desc: The purpose of this code will be to verify that 
 strings passed to the Strip_html_tags.php file are stripped of things that shouldn't be there.
 */
-
-$
+include 'strip_html_tags.php';
+$foo = strip_html_tags($foo);
+echo $foo;
