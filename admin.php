@@ -427,7 +427,7 @@ if ($_SESSION['user_level'] == 2){
 			//Take form values convert to php format and strip tags
 			$username = mysqli_real_escape_string($con, $_POST['user_name']);
 			$username = strip_html_tags($username);
-			$useremail = $username. "@lhup.edu");
+			$useremail = $username. "@lhup.edu";
 			$uniq_code = uniqid();
 			
 			//Email with verification code sent to email generated
