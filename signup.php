@@ -20,7 +20,7 @@ echo '<h2>A page for LHU Students designed by LHU students</h2>';
 //divide the page into two columns
 echo '<div id ="split1"><h3>Create your new account<br/>
 ***************************************************************************<br/></h3>';
-//user sign up form do nothing until submitted
+//user sign up form, do nothing until submitted
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	echo '<form name="Form1" method="post" action"">
 	<table>	
@@ -129,7 +129,6 @@ else{
 	else{
 		//checks done, now insert the user
 		//take the form values and put into reusable php variables
-		//the md5 function hashes the password
 		//Email address is formed from username + @lhup.edu
 		$userlname = mysqli_real_escape_string($con, $_POST['user_lname']);
 		$userfname =mysqli_real_escape_string($con, $_POST['user_fname']);
@@ -137,7 +136,7 @@ else{
 		$userpass = hash('sha256',$_POST['user_pass']);
 		$useremail = mysqli_real_escape_string ($con,$_POST['user_name']. "@lhup.edu");
 		$uniq_code = uniqid();
-		
+		//check which image radio button is checked
 		$status1 = 'unchecked';
 		$status2 = 'unchecked';
 		$status3 = 'unchecked';
