@@ -3,11 +3,14 @@
 File name: forum.php
 Created by: Wesley Chubb
 Created Date: 10/29/14
-Last Modified By: David Hall
-Last Modified Date: 11/11/2014 5:30 PM
-Version 3.1
+Last Modified By: Wesley Chubb
+Last Modified Date: 11/25/2014 3:00 AM
+Version 3.2
 */
+
 include 'connect.php';
+
+/*if the user isn't signed in*/
 if ($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 {
 	include 'header2.php';
@@ -18,14 +21,16 @@ if ($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true)
 	Sorry, you do not have sufficient rights to access this page.';
 	include 'footer2.php';
 }
+
+/*if the user is signed in then will do the following*/
 else{
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<!--Begin Content -->
 	<div id="content">
 	<div>';
+	
 	//first select the forum based on $_GET['cat_id']
-
 	$sql = "SELECT a.forum_id, a.forum_name,a.forum_description, b.cat_desc
 			FROM forums as a
 			LEFT JOIN forum_categories as b 
@@ -34,13 +39,19 @@ else{
 
 	$result=mysqli_query($con, $sql);
 
+	//if there are no results display error message
 	if(!$result){
 		echo 'The forum could not be displayed, please try again later.';
 	}
+	
+	
 	else{
+		//if it's empty, display message
 		if (mysqli_num_rows($result) == 0){
 			echo 'This forum does not exist.';
 		}
+		
+		//else display appropriately
 		else{
 			//display forum data
 			while($row = mysqli_fetch_assoc($result)){
@@ -89,19 +100,19 @@ else{
 				
 				/* Setup vars for query. */
 				$targetpage = "threadx.php";
-				$limit = 5;								 //how many items to show per page
+				$limit = 5;		//how many items to show per page
 				$page = $_GET['page'];
 				if($page) 
-					$start = ($page - 1) * $limit; 			//first item to display on this page
+					$start = ($page - 1) * $limit; 	//first item to display on this page
 				else
-					$start = 0;								//if no page var is given, set start to 0
+					$start = 0;		//if no page var is given, set start to 0
 				
 				/* Setup page vars for display. */
-				if ($page == 0) $page = 1;					//if no page var is given, default to 1.
-				$prev = $page - 1;							//previous page is page - 1
-				$next = $page + 1;							//next page is page + 1
+				if ($page == 0) $page = 1;	//if no page var is given, default to 1.
+				$prev = $page - 1;		//previous page is page - 1
+				$next = $page + 1;		//next page is page + 1
 				$lastpage = ceil($total_pages/$limit);		//lastpage is = total pages / items per page, rounded up.
-				$lpm1 = $lastpage - 1;						//last page minus 1
+				$lpm1 = $lastpage - 1;		//last page minus 1
 				
 				/* 
 					Now we apply our rules and draw the pagination object. 
