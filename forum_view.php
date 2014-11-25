@@ -3,12 +3,14 @@
 File name: forum_view.php
 Created by: Wesley Chubb
 Created Date: 10/29/2014
-Last Modified by: David Hall
-Last Modified Date: 11/12/2014 7:30 PM
-Version 3.0
+Last Modified by: Wesley Chubb
+Last Modified Date: 11/25/2014 2:51 AM
+Version 3.1
 */
 
 include 'connect.php';
+
+/*checks to see if user is signed in*/
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
 	include 'header2.php';
 	include 'sidefiller.php';
@@ -17,6 +19,8 @@ if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
 	Sorry, you do not have sufficient rights to access this page.';
 	include 'footer2.php';
 }
+
+/* This else statement displays accordingly if the user is logged in*/
 else {
 include 'header.php';
 include 'sidebar.php';
@@ -34,7 +38,8 @@ echo '<!-- Begin Content -->
 			Last Login: '.date('m-d-Y h:i A', strtotime($_SESSION['user_last_login'])).'
 		</td>
 	</tr>';
-
+	
+/*for loop queries from database to display information appropriately based on the thread's category*/
 for($cat = 1; $cat <20; $cat++){
 	$sql = "SELECT
 			forum_id,
@@ -46,6 +51,8 @@ for($cat = 1; $cat <20; $cat++){
 		WHERE
 			forum_cat = $cat";
 	$result = mysqli_query($con,$sql);
+	
+	/*checks if the category is set to 1*/
 	if ($cat == 1){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
@@ -66,6 +73,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -74,6 +82,7 @@ for($cat = 1; $cat <20; $cat++){
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
 				
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -97,6 +106,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -104,7 +115,8 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==2){
+	/*checks if the category is set to 2*/
+	elseif ($cat == 2){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -124,6 +136,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -131,7 +144,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -155,6 +169,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -162,7 +178,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==3){
+	
+	/*checks if the category is set to 3*/
+	elseif ($cat == 3){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -182,6 +200,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -189,7 +208,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -213,6 +233,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -220,7 +242,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==4){
+	
+	/*checks if the category is set to 4*/
+	elseif ($cat == 4){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -240,6 +264,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -247,7 +272,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -271,6 +297,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -278,7 +306,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==5){
+	
+	/*checks if the category is set to 5*/
+	elseif ($cat == 5){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -298,6 +328,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -305,7 +336,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -329,6 +361,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -336,7 +370,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==6){
+	
+	/*checks if the category is set to 6*/
+	elseif ($cat == 6){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -356,6 +392,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -363,7 +400,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/	
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -387,6 +425,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -394,7 +434,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==7){
+	
+	/*checks if the category is set to 7*/
+	elseif ($cat == 7){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -414,6 +456,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -421,7 +464,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -445,6 +489,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
@@ -452,7 +498,9 @@ for($cat = 1; $cat <20; $cat++){
 			</tbody>';
 		}
 	}
-	elseif ($cat ==8){
+	
+	/*checks if the category is set to 8*/
+	elseif ($cat == 8){
 		$inner_sql ="SELECT cat_desc FROM forum_categories WHERE cat_id = $cat";
 		$inner_result = mysqli_query($con,$inner_sql);
 		while($row = mysqli_fetch_assoc($inner_result)){
@@ -472,6 +520,7 @@ for($cat = 1; $cat <20; $cat++){
 			<td class="thead">Posts</td>  
 		</tr>';
 		
+		/*queries the database for post count*/
 		while($row = mysqli_fetch_assoc($result)){
 				$sql_count = "SELECT IFNULL (SUM(post_counter),0) as total
 				FROM
@@ -479,7 +528,8 @@ for($cat = 1; $cat <20; $cat++){
 				WHERE
 					".$row['forum_id']." = thread_cat";
 				$post_count = mysqli_query($con,$sql_count);
-				
+			
+			/*displays page formatting and information including total post and thread counts*/
 			echo '<tbody>
 				<tr class="border_bottom" align="center">
 					<td><img src="images/forum_old.gif" alt=""></td>
@@ -503,6 +553,8 @@ for($cat = 1; $cat <20; $cat++){
 						</div>
 					</td>
 					<td> '.$row['thread_counter'].'  </td>';
+					
+					/*gets and shows the total post count*/
 					while ($row_count = mysqli_fetch_assoc($post_count)){
 						echo '<td> '.$row_count['total'].' </td>';
 					}
