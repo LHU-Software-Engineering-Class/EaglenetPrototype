@@ -30,16 +30,30 @@ and at that point they can enter a issue that will be put into the DB for
 admins to review later
 */
 else {
+	$connect = mysqli_connect(eaglenet);
+	
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<div id ="content">
 	<body style="background-color:White">
 	<div class ="kona body">
+
+
+	<p>
+		Please select where you are having an issue on eaglenet:
+		<br/>
+		<select>
+  			<option value="forum">Forum</option>
+  			<option value="thread">Thread</option>
+ 			<option value="post">Post</option>
+  			<option value="other">Other</option>
+		</select>
+	</p>
 		
 	<p>
     	Comments: <br/>
-      <textarea name = "comments" rows = "10" cols = "50" > Enter text here </textarea>
-    </p>';
+    	<textarea name = "comments" rows = "10" cols = "50" > Enter text here </textarea>
+    	</p>';
 
 	include 'footer.php';
 }
