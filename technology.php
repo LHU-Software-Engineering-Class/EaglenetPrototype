@@ -43,8 +43,8 @@ else {
 			instructions for gaming consols on campus: </p>
 		<a href="url">http://www.lhup.edu/About/finance_administration/information_technology.html</a>
 		
-		<p>Q: How do I check and see who my assigned advisor is?</p>
-		<a href="url">A: ......Im not your advisor? Why are you here? </a>;
+		<p> On/Off campus job listings. This website is updated freequently</p>
+		<a href="url">http://community.lhup.edu/careerservices/campuslocalemployment.htm</a>;
 
 	include 'footer.php';
 }
