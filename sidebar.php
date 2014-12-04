@@ -39,6 +39,7 @@ Version 2.0
 			<li><a href="maps.php">Campus Maps</a></li>
 			<li><a href="advisor.php">Advisors FAQ</a></li>
 			<li><a href="technology.php">Technology Help</a></li>
+			<li><a href="issues.php">Report Issues</a></li>
 			</ul>
 	</div>
 <!-- End Sidebar -->
