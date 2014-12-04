@@ -60,6 +60,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat1"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -123,6 +124,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat2"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -187,6 +189,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat3"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -251,6 +254,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat4"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -315,6 +319,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat5"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -379,6 +384,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat6"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -443,6 +449,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat7"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
@@ -507,6 +514,7 @@ for($cat = 1; $cat <20; $cat++){
 			echo'<tbody>
 				<tr>
 					<td class="tcat" colspan="5">
+						<a name="cat8"></a> 
 						Forum Category: '.$row['cat_desc'].'
 					</td>
 				</tr>
