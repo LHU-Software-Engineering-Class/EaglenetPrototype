@@ -33,18 +33,20 @@ else {
 	include 'header.php';
 	include 'sidebar.php';
 	echo '<div id ="content">
-	<body style="background-color:White">
-	<div class ="kona body">
-		<p> Link to VMware website for either using a virtual client or 
-			downloading the desktop version for your laptop: </p>
+	
+		<p> Link to VMware website for either using a virtual client <br/>or 
+			downloading the desktop version for your laptop: <br/>
 		<a href="url">www.viewconnection.lhup.edu</a>
+		</p>
 		
 		<p> Link to both password resets and registration
-			instructions for gaming consols on campus: </p>
+			instructions for gaming consols on campus: <br/>
 		<a href="url">http://www.lhup.edu/About/finance_administration/information_technology.html</a>
+		</p>
 		
-		<p> On/Off campus job listings. This website is updated freequently</p>
-		<a href="url">http://community.lhup.edu/careerservices/campuslocalemployment.htm</a>;
+		<p> On/Off campus job listings. This website is updated freequently <br/>
+		<a href="url">http://community.lhup.edu/careerservices/campuslocalemployment.htm</a>
+		</p>';
 
 	include 'footer.php';
 }
