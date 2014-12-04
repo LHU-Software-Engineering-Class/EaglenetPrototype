@@ -15,14 +15,14 @@ correct header side bar and footer menues
 otherwise they are given a header side bars and footter
 that will not take them to anything on the website
 */
-	include 'connect.php';
+include_once 'connect.php';
 if($_SESSION['signed_in'] == false | $_SESSION['user_status'] != true){
-	include 'header2.php';
-	include 'sidefiller.php';
+	include_once 'header2.php';
+	include_once 'sidefiller.php';
 	echo '<!-- Begin Content -->
 	<div id="content2">
 	Sorry, you do not have sufficient rights to access this page.';
-	include 'footer2.php';
+	include_once 'footer2.php';
 }
 /*
 If they enter the else statement then they are taken to the the technology page
@@ -30,25 +30,23 @@ and at that point they will have links that they can access for different tech
 pages on campus
 */
 else {
-	include 'header.php';
-	include 'sidebar.php';
-	echo '<div id ="content">
+	include_once 'header.php';
+	include_once 'sidebar.php';
+	echo '<div id ="content2">
 	
-		<p> Link to VMware website for either using a virtual client <br/>or 
-			downloading the desktop version for your laptop: <br/>
-		<a href="url">www.viewconnection.lhup.edu</a>
+		<p>Link to VMware website for either using a virtual client <br/>
+			or downloading the desktop version for your laptop: <br/>
+		<a href="https://viewconnection.lhup.edu">Click Here</a>
 		</p>
 		
 		<p> Link to both password resets and registration
-			instructions for gaming consols on campus: <br/>
-		<a href="url">http://www.lhup.edu/About/finance_administration/information_technology.html</a>
+			instructions for gaming consoles on campus: <br/>
+		<a href="http://www.lhup.edu/About/finance_administration/information_technology.html">Click Here</a>
 		</p>
 		
-		<p> On/Off campus job listings. This website is updated freequently <br/>
-		<a href="url">http://community.lhup.edu/careerservices/campuslocalemployment.htm</a>
+		<p> On/Off campus job listings. This website is updated frequently: <br/>
+		<a href="http://community.lhup.edu/careerservices/campuslocalemployment.htm">Click Here</a>
 		</p>';
 
-	include 'footer.php';
+	include_once 'footer.php';
 }
-
-?>
