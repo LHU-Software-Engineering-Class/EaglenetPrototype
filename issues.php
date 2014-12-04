@@ -1,10 +1,10 @@
 <?php
 /*
-File name: technology.php
+File name: issues.php
 Created By: Erik Suiker
 Created Date: 11/15/14
 Last Modified By: Erik Suiker
-Last Modified Date: 11/18/14 
+Last Modified Date: 12/04/14 
 version 1.1
 */
 
@@ -30,32 +30,51 @@ and at that point they can enter a issue that will be put into the DB for
 admins to review later
 */
 else {
-	$connect = mysqli_connect(eaglenet);
-	
 	include 'header.php';
 	include 'sidebar.php';
-	echo '<div id ="content">
-	<body style="background-color:White">
-	<div class ="kona body">
+	echo '<div id="content2">';
 
-
-	<p>
-		Please select where you are having an issue on eaglenet:
-		<br/>
-		<select>
-  			<option value="forum">Forum</option>
-  			<option value="thread">Thread</option>
- 			<option value="post">Post</option>
-  			<option value="other">Other</option>
-		</select>
-	</p>
+	if($_SERVER['REQUEST_METHOD'] != 'POST'){
+		echo '<p>
+			Please select where you are having an issue on eaglenet:
+			<br/ >
+				<form name="Form1" method="post" action"">
+				<select name="type" >
+					<option value="forum">Forum</option>
+					<option value="thread">Thread</option>
+					<option value="post">Post</option>
+					<option value="other">Other</option>
+				</select>
+			</p>
+				
+			<p>
+				Comments: <br/>
+				<textarea name = "comments" rows = "10" cols = "50" > </textarea>
+			</p>
+			<input type="submit" value="Submit">
+		</form>';
+	}
+	else{
+		$type = mysqli_real_escape_string($con, $_POST['type']);
+		$comments = mysqli_real_escape_string($con, $_POST['comments']);
+		$sql = "INSERT INTO issues (issue_date,issue_type, issue_description)
+			VALUES (NOW(),'$type','$comments')";
+			$result = mysqli_query($con, $sql);
 		
-	<p>
-    	Comments: <br/>
-    	<textarea name = "comments" rows = "10" cols = "50" > Enter text here </textarea>
-    	</p>';
+			//if user data can not be inserted show error
+			if(!$result){
+				echo 'Something went wrong Please try again later.';
+				header( "refresh:7; url= start.php" );
+			}
+			//successfully registered and email sent to user
+			else{
+				echo 'You have successfully submitted an issue.
+				Please allow 2-3 days for actions to be taken';
+			}
+	}
 
 	include 'footer.php';
+
 }
 
 ?>
