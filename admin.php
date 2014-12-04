@@ -19,28 +19,28 @@ edit forum
 */
 
 //admin.php
-include 'connect.php';
+include_once 'connect.php';
 //check if user is signed in and verified to use the EagleNet if not show dummy page
 if ($_SESSION['signed_in'] == false | $_SESSION['user_status'] == false){
-	include 'header2.php';
-	include 'sidefiller.php';
+	include_once 'header2.php';
+	include_once 'sidefiller.php';
 	echo '<!-- Begin Content -->
 	<div id="content2">
 	Sorry, you do not have sufficient rights to access this page.<br/>
 	</div>';
-	include 'footer2.php';
+	include_once 'footer2.php';
 }
 //Check if the user has the access rights to view this page show redirect page
 if($_SESSION['user_level'] == 0){
-	include 'header.php';
-	include 'sidebar.php';
+	include_once 'header.php';
+	include_once 'sidebar.php';
 	echo '<!-- Begin Content -->
 	<div id="content2">
 	Sorry, you do not have sufficient rights to access this page.<br/>
 	<h3>Please go back to the authorized pages. <br/><br/>
 	Or <a href="start.php">CLICK HERE</a> to go back to the Start page.</h3>
 	</div>';
-	include 'footer.php';
+	include_once 'footer.php';
 }
 //If the user has Moderator or Administrator access allow access to these features
 //Forum create
@@ -49,19 +49,29 @@ if($_SESSION['user_level'] == 0){
 //find posts by username
 
 if ($_SESSION['user_level'] == 1 or $_SESSION['user_level'] == 2){
-	include 'strip_html_tags.php';
-	include 'header.php';
-	include 'sidebar.php';
+	include_once 'strip_html_tags.php';
+	include_once 'header.php';
+	include_once 'sidebar.php';
 	echo'<div id="content3">';
 //**********************************************************************
 //Link to forum_create.php page
 	//Only show form until posted
 	if($_SERVER['REQUEST_METHOD'] != 'POST'){
 		echo'<h3>MODERATOR AND ADMINISTRATOR LEVEL PRIVILEGES</h3>
-		<hr/>';
-		echo '<div id="content">
+		<hr/>
+		<div id="content">
 		<form action="forum_create.php">
 			<input type="submit" value="Create a new forum">
+		</form>
+		</div>';
+	}
+//Link to forum_create.php page
+	//Only show form until posted
+	if($_SERVER['REQUEST_METHOD'] != 'POST'){
+		echo'
+		<div id="content">
+		<form action="view_issues.php">
+			<input type="submit" value="View Issues Page">
 		</form>
 		<hr>
 		</div>';
@@ -86,12 +96,12 @@ if ($_SESSION['user_level'] == 1 or $_SESSION['user_level'] == 2){
 			$username = mysqli_real_escape_string($con,$_POST['user_name']);
 			$username = strip_html_tags($username);
 			$fname = mysqli_real_escape_string($con,$_POST['user_fname']);
-			$username = strip_html_tags($fname);
+			$fname = strip_html_tags($fname);
 			$lname = mysqli_real_escape_string($con,$_POST['user_lname']);
-			$username = strip_html_tags($lname);
+			$lname = strip_html_tags($lname);
 			
 			//SQL query for users based on form input
-			$sql = "SELECT *FROM users WHERE user_name = '$username' OR user_fname = '$fname' OR  user_lname = '$lname'";
+			$sql = "SELECT * FROM users WHERE user_name = '$username' OR user_fname = '$fname' OR  user_lname = '$lname'";
 			$result = mysqli_query($con, $sql);
 			if(!$result){
 				echo'Error';
@@ -431,7 +441,7 @@ if ($_SESSION['user_level'] == 2){
 			$uniq_code = uniqid();
 			
 			//Email with verification code sent to email generated
-			include 'mail.php';
+			include_once 'mail.php';
 			//if email cannot be sent 
 			if(!$mail->Send()) {
 				echo 'Failed to send a new verification email to '.$username.'';
@@ -447,4 +457,5 @@ if ($_SESSION['user_level'] == 2){
 				echo '<h3>A new verification E-Mail message has been sent to '.$username.'</h3>';
 			}
 		}
+	include_once 'footer.php';
 }

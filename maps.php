@@ -4,9 +4,9 @@
 File name: maps.php
 Created By: AJ Radle
 Created Date: 11/11/2014
-Last Modified By: AJ Radle
-Last Modified Date: 11/18/2014
-version 1.0
+Last Modified By: David Hall
+Last Modified Date: 12/4/2014
+version 2.0
 */
 
 include 'connect.php';
@@ -30,9 +30,18 @@ else
 	<div class ="kona body">';
 
 	/* Place the images here!*/
-	echo '<IMG SRC="/images/Main_Campus_Map.jpg" ALT="Campus Map" WIDTH=1558 HEIGHT=1186>';	
-	echo '<IMG SRC="/images/LHU_Map.PNG" ALT="Parking at LHU" WIDTH=1004 HEIGHT=756>';
+	echo '
+	<h1> LHU Main Campus Map</h1>
+	<a href="images/Main_Campus_Map.jpg" target="_blank">
+		<IMG SRC="images/main_campus_map_small.jpg" ALT="Campus Map">
+	</a>
 	
+	<br/><h2> Click map for larger view</h2><hr>
+	
+	<br/>
+	<h1> LHU Main Campus Parking Map</h1>
+	<a href="images/LHU_Map.png"target="_blank"><IMG SRC="images/lhu_map_small.PNG" ALT="Parking at LHU"></a>
+	<br/><h2> Click map for larger view</h2>';
 	
 	include 'footer.php';
 }
