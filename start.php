@@ -12,19 +12,14 @@ else {
 include 'header.php';
 include 'sidebar.php';
 echo'<div id="content2">
-<body bgcolor="darkred">
-<font size="7" color="cyan">
+<font size="7">
 <p align="center"><b><i>WELCOME TO EAGLENET!</i></b></p>
 </font>
-<font size="4" color="cyan">
+<font size="4">
 <p align="center"><b><i>99% uptime!</i></b></p>
 </font>
 <dl>
-  <dt><h1><font color="white">TEST!</font></h></dt>
-
-  <ul type ="square">
-  <dd><li><font color="white">still working on the posts</font></li>
-      <li><font color="white">stuff</font></li>
+  <dt><h1>Check out the sidebar!</font></h></dt>
   </ul>
   </dd>
 </dl>
