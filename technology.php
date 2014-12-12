@@ -37,13 +37,13 @@ else {
 		<p> 
 			<strong>Link to VMware website for either using a virtual client <br/>or 
 			downloading the desktop version for your laptop: </strong><br/>
-			<a href="url">www.viewconnection.lhup.edu</a>
+			<a href="http://viewconnection.lhup.edu">Click Here</a>
 		</p><br>
 		
 		<p> 
 			<strong>Link to both password resets and registration
 			instructions for gaming consols on campus: </strong><br/>
-			<a href="url">http://www.lhup.edu/About/finance_administration/information_technology.html</a>
+			<a href="http://www.lhup.edu/About/finance_administration/information_technology.html">Click Here</a>
 		</p><br>
 		
 		<p> 
@@ -89,7 +89,7 @@ else {
 		
 		<p> 
 			<strong> For information visit the new student computer information pdf here: </strong><br/>
-			<a href="url">http://www.lhup.edu/admissions/New_Student_Computer_Information.pdf</a>
+			<a href="http://www.lhup.edu/admissions/New_Student_Computer_Information.pdf">Click Here</a>
 		</p><br>';
 
 	include_once 'footer.php';
