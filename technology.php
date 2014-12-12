@@ -48,7 +48,7 @@ else {
 		
 		<p> 
 			<strong>On/Off campus job listings. This website is updated freequently: </strong><br/>
-			<a href="url">http://community.lhup.edu/careerservices/campuslocalemployment.htm</a>
+			<a href="http://community.lhup.edu/careerservices/campuslocalemployment.htm">Click Here</a>
 		</p><br>
 		
 		<p>
